@@ -1,42 +1,45 @@
+// schema-loader.js
 async function loadSchema() {
   try {
-    // Laad schema.json relatief t.o.v. index.html
-    const res = await fetch('./schema.json', {
-      cache: "no-store"   // Geen caching → altijd laatste versie laden
-    });
+    const url = new URL('./schema.json', window.location.href).toString();
+    console.log('[schema-loader] fetch:', url);
 
+    const res = await fetch(url, { cache: 'no-store' });
     if (!res.ok) {
-      console.error("Schema loader foutstatus:", res.status);
-      throw new Error(`Schema kon niet geladen worden (status ${res.status})`);
+      throw new Error(`schema.json kon niet geladen worden (HTTP ${res.status})`);
     }
 
     const data = await res.json();
 
-    if (!data || !data.questionnaire || !data.questionnaire.questions) {
-      throw new Error("Schema is ongeldig of onvolledig.");
+    if (!data || !data.questionnaire || !Array.isArray(data.questionnaire.questions)) {
+      throw new Error('schema.json mist "questionnaire.questions" (ongeldige structuur).');
     }
-
+    console.log('[schema-loader] OK. Questions:', data.questionnaire.questions.length);
     return data;
 
   } catch (err) {
-    console.error("Fout bij laden schema.json:", err);
+    console.error('[schema-loader] fout:', err);
 
-    // Vang fout netjes op in UI
-    const container = document.getElementById("question-container");
-    if (container) {
-      container.innerHTML = `
-        <div style="background:#fee2e2;border:1px solid #ef4444;padding:20px;border-radius:8px;">
-          <strong>⚠ Schema fout:</strong><br>
-          ${err.message}<br><br>
-          <em>Controleer of schema.json geldig is en op de juiste plaats staat.</em>
-        </div>
-      `;
-    }
+    // Toon zichtbaar in de UI, zodat testers meteen snappen wat fout gaat
+    const c = document.getElementById('question-container') || document.body;
+    const box = document.createElement('div');
+    box.style.background = '#fee2e2';
+    box.style.border = '1px solid #ef4444';
+    box.style.padding = '20px';
+    box.style.borderRadius = '8px';
+    box.style.marginTop = '20px';
+    box.innerHTML = `
+      <strong>⚠ Schema fout</strong><br>
+      ${err.message}<br><br>
+      <em>Checklist:</em><br>
+      • Staat <code>schema.json</code> in dezelfde map als <code>index.html</code>?<br>
+      • Is de bestandsnaam exact <code>schema.json</code> (kleine letters)?<br>
+      • Is de JSON syntactisch geldig (controleer via jsonlint.com)?<br>
+      • Hard reload (Ctrl/Cmd + Shift + R) om caching te omzeilen.
+    `;
+    c.appendChild(box);
 
-    // Return lege fallback zodat de app niet crasht
-    return {
-      questionnaire: { questions: [] },
-      decision_logic: {}
-    };
+    // Fallback zodat app niet crasht
+    return { questionnaire: { questions: [] }, decision_logic: {} };
   }
 }
