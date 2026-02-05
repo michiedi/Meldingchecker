@@ -70,6 +70,10 @@ button.secondary:hover {
   background: #4b5563;
 }
 
+.hidden {
+  display: none !important;
+}
+
 button.hidden {
   display: none;
 }
