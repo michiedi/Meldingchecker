@@ -67,10 +67,7 @@
         "is_conditional": false
       }
       ,
-      /* ============================
-         ROUTE A — Artikel 2 VCRO
-         Stabiliteitswerken binnenin
-         ============================ */
+      
       {
         "id": "A_01",
         "route": "A",
@@ -105,10 +102,7 @@
         "is_conditional": false
       },
 
-      /* ============================
-         ROUTE B — Artikel 3 VCRO
-         Stabiliteitswerken aan zij-/achtergevels en daken
-         ============================ */
+
       {
         "id": "B_01",
         "route": "B",
@@ -154,10 +148,7 @@
         "is_conditional": false
       },
 
-      /* ============================
-         ROUTE C — Artikel 4 VCRO
-         Aangebouwde bijgebouwen aan woningen
-         ============================ */
+     
       {
         "id": "C_01",
         "route": "C",
@@ -318,10 +309,7 @@
         "is_conditional": false
       }
       ,
-      /* ============================
-         ROUTE D — Artikel 5 §1 VCRO
-         Constructies (geen gebouwen of verhardingen)
-         ============================ */
+
       {
         "id": "D_01",
         "route": "D",
@@ -415,7 +403,7 @@
         "is_conditional": false
       },
 
-      /* Havenvoorwaarden — Art. 5 §4 VCRO */
+   
       {
         "id": "D_H1",
         "route": "D",
@@ -461,10 +449,7 @@
         "is_conditional": false
       },
 
-      /* ============================
-         ROUTE E — Artikel 5 §2 VCRO
-         Verhardingen
-         ============================ */
+      
       {
         "id": "E_01",
         "route": "E",
@@ -558,7 +543,7 @@
         "is_conditional": false
       },
 
-      /* Havenvoorwaarden (zelfde als Categorie D/F) */
+      
       {
         "id": "E_H1",
         "route": "E",
@@ -604,10 +589,7 @@
         "is_conditional": false
       },
 
-      /* ============================
-         ROUTE F — Artikel 5 §3 VCRO
-         Gebouwen
-         ============================ */
+      
       {
         "id": "F_01",
         "route": "F",
@@ -778,7 +760,7 @@
         "is_conditional": false
       },
 
-      /* Havenvoorwaarden opnieuw voor route F */
+      
       {
         "id": "F_H1",
         "route": "F",
@@ -827,10 +809,7 @@
         "is_conditional": false
       }
       ,
-      /* ============================
-         ROUTE G — Artikel 5/1 VCRO
-         Ondergeschikte wooneenheid
-         ============================ */
+
       {
         "id": "G_01",
         "route": "G",
@@ -931,10 +910,7 @@
         "is_conditional": false
       },
 
-      /* ============================
-         ROUTE H — Artikel 5/2 VCRO
-         Tijdelijke verplaatsbare woonconstructies
-         ============================ */
+    
       {
         "id": "H_01",
         "route": "H",
@@ -1073,9 +1049,7 @@
     ]
   },
 
-  /* ============================
-     DECISION LOGIC (VALIDATION)
-     ============================ */
+
   "decision_logic": {
     "exclusion_gate": {
       "blocking_questions": [
