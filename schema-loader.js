@@ -1,4 +1,3 @@
-// schema-loader.js
 async function loadSchema() {
   try {
     const url = new URL('./schema.json', window.location.href).toString();
