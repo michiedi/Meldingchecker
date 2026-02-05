@@ -1,80 +1,76 @@
 {
-  "schema_version": "1.0.0",
-  "title": "Meldingsbesluit – Toetshulp",
+  "schema_version": "1.1.0",
+  "title": "Meldingsbesluit – Toetshulp (Enhanced Schema)",
   "questionnaire": {
     "questions": [
+
       {
         "id": "EXC_01",
         "section": "EXCLUSION_GATE",
         "text": "Strijdig met verordening/RUP/BPA/verkaveling/vergunningsvoorwaarden?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 6, lid 1 — strijd met verordeningen, plannen of vergunningsvoorwaarden",
-        "fail_message": "De handeling is strijdig met geldende voorschriften (bv. verordening, RUP/BPA, verkavelingsvoorschriften) of met uitdrukkelijke voorwaarden van een omgevingsvergunning. Daardoor kan het meldingsbesluit niet worden toegepast."
+        "fail_message": "De handeling is strijdig met geldende voorschriften zoals RUP, BPA of vergunningsvoorwaarden. Hierdoor sluit artikel 6 de meldingsmogelijkheid uit.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "EXC_02",
         "section": "EXCLUSION_GATE",
         "text": "Beschermd erfgoed (monument/landschap/stads- of dorpsgezicht/archeologie)?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 6, lid 2 — beschermd erfgoed (monument, landschap, stads-/dorpsgezicht, archeologische site)",
-        "fail_message": "De handeling ligt op of binnen beschermd erfgoed. Meldingsplicht is hier uitgesloten."
+        "legal_basis": "Artikel 6, lid 2 — beschermd erfgoed",
+        "fail_message": "De handeling bevindt zich op of binnen beschermd erfgoed. Meldingsplicht is uitgesloten.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "EXC_03",
         "section": "EXCLUSION_GATE",
         "text": "In afgebakende oeverzone of 5m-strook langs (on)bevaarbare waterlopen?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 6, lid 3 — oeverzones en 5 m-strook langs waterlopen",
-        "fail_message": "De handeling ligt in een afgebakende oeverzone of in de 5 meter brede strook langs een ingedeelde waterloop. Daarom kan geen melding."
+        "legal_basis": "Artikel 6, lid 3 — oeverzones en 5 meterstroken",
+        "fail_message": "De locatie valt binnen oeverzones of 5 m-stroken langs waterlopen. Meldingsplicht is uitgesloten.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "EXC_04",
         "section": "EXCLUSION_GATE",
         "text": "Voor de rooilijn of in achteruitbouwstrook?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 6, lid 4 — voor de rooilijn of in achteruitbouwstrook",
-        "fail_message": "De handeling ligt voor de rooilijn of in een achteruitbouwstrook en valt daardoor buiten het toepassingsgebied van het meldingsbesluit."
+        "legal_basis": "Artikel 6, lid 4 — rooilijn/achteruitbouwstrook",
+        "fail_message": "De handeling bevindt zich voor de rooilijn of in een achteruitbouwstrook, in strijd met artikel 6.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "CAT_01",
         "section": "CATEGORY_SELECTOR",
         "text": "Kies je hoofdcategorie:",
         "answer_type": "enum",
         "options": [
-          {
-            "value": "A",
-            "label": "A — Stabiliteitswerken binnen (art. 2)"
-          },
-          {
-            "value": "B",
-            "label": "B — Stabiliteitswerken zij/achter/dak (art. 3)"
-          },
-          {
-            "value": "C",
-            "label": "C — Aangebouwd bijgebouw woning (art. 4)"
-          },
-          {
-            "value": "D",
-            "label": "D — Constructies industrie/bedrijvigheid (art. 5 §1 + §4)"
-          },
-          {
-            "value": "E",
-            "label": "E — Verhardingen industrie/bedrijvigheid (art. 5 §2 + §4)"
-          },
-          {
-            "value": "F",
-            "label": "F — Gebouwen industrie/bedrijvigheid (art. 5 §3 + §4)"
-          },
-          {
-            "value": "G",
-            "label": "G — Ondergeschikte wooneenheid (art. 5/1)"
-          },
-          {
-            "value": "H",
-            "label": "H — Tijdelijke verplaatsbare woonconstructies (art. 5/2)"
-          }
-        ]
-      },
+          {"value": "A", "label": "A — Stabiliteitswerken binnen (art. 2)"},
+          {"value": "B", "label": "B — Stabiliteitswerken zij/achter/dak (art. 3)"},
+          {"value": "C", "label": "C — Aangebouwd bijgebouw woning (art. 4)"},
+          {"value": "D", "label": "D — Constructies industrie/bedrijvigheid (art. 5 §1 + §4)"},
+          {"value": "E", "label": "E — Verhardingen industrie/bedrijvigheid (art. 5 §2 + §4)"},
+          {"value": "F", "label": "F — Gebouwen industrie/bedrijvigheid (art. 5 §3 + §4)"},
+          {"value": "G", "label": "G — Ondergeschikte wooneenheid (art. 5/1)"},
+          {"value": "H", "label": "H — Tijdelijke verplaatsbare woonconstructies (art. 5/2)"}
+        ],
+        "is_required": true,
+        "is_conditional": false
+      }
+      ,
+      /* ============================
+         ROUTE A — Artikel 2 VCRO
+         Stabiliteitswerken binnenin
+         ============================ */
       {
         "id": "A_01",
         "route": "A",
@@ -82,7 +78,9 @@
         "text": "Stabiliteitswerken binnenin (ge)vergund gebouw?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 2 (inleidend) — stabiliteitswerken binnen hoofdzakelijk (ge)vergund gebouw",
-        "fail_message": "De werken zijn geen stabiliteitswerken binnenin een hoofdzakelijk (ge)vergund gebouw."
+        "fail_message": "De werken zijn geen stabiliteitswerken binnenin een hoofdzakelijk (ge)vergund gebouw.",
+        "is_required": true,
+        "is_conditional": false
       },
       {
         "id": "A_02",
@@ -91,7 +89,9 @@
         "text": "Geen vergunningsplichtige functiewijziging?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 2, 1° — geen vergunningsplichtige functiewijziging",
-        "fail_message": "Er is een vergunningsplichtige functiewijziging. Daardoor is melding uitgesloten en is een vergunning vereist."
+        "fail_message": "Er is een vergunningsplichtige functiewijziging. Daardoor is melding uitgesloten en is een vergunning vereist.",
+        "is_required": true,
+        "is_conditional": false
       },
       {
         "id": "A_03",
@@ -100,17 +100,25 @@
         "text": "Aantal woongelegenheden blijft ongewijzigd?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 2, 2° — aantal woongelegenheden blijft ongewijzigd",
-        "fail_message": "Het aantal woongelegenheden wijzigt. Hierdoor kan geen melding."
-
+        "fail_message": "Het aantal woongelegenheden wijzigt. Hierdoor kan geen melding.",
+        "is_required": true,
+        "is_conditional": false
       },
+
+      /* ============================
+         ROUTE B — Artikel 3 VCRO
+         Stabiliteitswerken aan zij-/achtergevels en daken
+         ============================ */
       {
         "id": "B_01",
         "route": "B",
         "section": "ROUTE",
-        "text": "Stabiliteitswerken aan zij-/achtergevel(s) of dak (ge)vergund gebouw?",
+        "text": "Stabiliteitswerken aan zij-/achtergevel(s) of dak?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 3 (inleidend) — stabiliteitswerken aan zij-/achtergevels en daken",
-        "fail_message": "De werken betreffen niet de zij-/achtergevel(s) of het dak van een hoofdzakelijk (ge)vergund gebouw."
+        "fail_message": "De werken betreffen niet de zij-/achtergevel(s) of het dak van een hoofdzakelijk (ge)vergund gebouw.",
+        "is_required": true,
+        "is_conditional": false
       },
       {
         "id": "B_02",
@@ -119,7 +127,9 @@
         "text": "Geen vergunningsplichtige functiewijziging?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 3, 1° — geen vergunningsplichtige functiewijziging",
-        "fail_message": "Er is een vergunningsplichtige functiewijziging. Daardoor vervalt de meldingsmogelijkheid."
+        "fail_message": "Er is een vergunningsplichtige functiewijziging. Daardoor vervalt de meldingsmogelijkheid.",
+        "is_required": true,
+        "is_conditional": false
       },
       {
         "id": "B_03",
@@ -128,7 +138,9 @@
         "text": "Aantal woongelegenheden blijft ongewijzigd?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 3, 2° — aantal woongelegenheden blijft ongewijzigd",
-        "fail_message": "Het aantal woongelegenheden wijzigt, waardoor melding niet kan."
+        "fail_message": "Het aantal woongelegenheden wijzigt, waardoor melding niet kan.",
+        "is_required": true,
+        "is_conditional": false
       },
       {
         "id": "B_04",
@@ -137,9 +149,15 @@
         "text": "Bouwvolume en -oppervlakte blijven ongewijzigd?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 3, 3° — bouwvolume en bouwoppervlakte blijven ongewijzigd",
-        "fail_message": "Bouwvolume of bouwoppervlakte wijzigt. Voor dergelijke wijziging volstaat een melding niet."
-
+        "fail_message": "Bouwvolume of bouwoppervlakte wijzigt. Voor dergelijke wijziging volstaat een melding niet.",
+        "is_required": true,
+        "is_conditional": false
       },
+
+      /* ============================
+         ROUTE C — Artikel 4 VCRO
+         Aangebouwde bijgebouwen aan woningen
+         ============================ */
       {
         "id": "C_01",
         "route": "C",
@@ -147,7 +165,9 @@
         "text": "Aangebouwd bijgebouw aan (ge)vergunde woning?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 4 (inleidend) — aangebouwd bijgebouw aan hoofdzakelijk (ge)vergunde woning",
-        "fail_message": "Het gaat niet om een aangebouwd bijgebouw aan een (ge)vergunde woning."
+        "fail_message": "Het gaat niet om een aangebouwd bijgebouw aan een (ge)vergunde woning.",
+        "is_required": true,
+        "is_conditional": false
       },
       {
         "id": "C_02",
@@ -156,7 +176,9 @@
         "text": "Geen vergunningsplichtige functiewijziging?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 4, 1° — geen vergunningsplichtige functiewijziging",
-        "fail_message": "Er is een vergunningsplichtige functiewijziging. Meldingsprocedure is dan niet mogelijk."
+        "fail_message": "Er is een vergunningsplichtige functiewijziging. Meldingsprocedure is dan niet mogelijk.",
+        "is_required": true,
+        "is_conditional": false
       },
       {
         "id": "C_03",
@@ -165,7 +187,9 @@
         "text": "Aantal woongelegenheden blijft ongewijzigd?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 4, 2° — aantal woongelegenheden blijft ongewijzigd",
-        "fail_message": "Het aantal woongelegenheden wijzigt. Daardoor kan geen melding."
+        "fail_message": "Het aantal woongelegenheden wijzigt. Daardoor kan geen melding.",
+        "is_required": true,
+        "is_conditional": false
       },
       {
         "id": "C_04",
@@ -173,8 +197,11 @@
         "section": "ROUTE",
         "text": "Totale opp. (m²) bestaande + nieuwe aangebouwde bijgebouwen",
         "answer_type": "number",
-        "legal_basis": "Artikel 4, 3° — totale oppervlakte aangebouwde bijgebouwen ≤ 40 m²"
+        "legal_basis": "Artikel 4, 3° — totale oppervlakte aangebouwde bijgebouwen ≤ 40 m²",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "C_05",
         "route": "C",
@@ -182,17 +209,14 @@
         "text": "Ligging t.o.v. perceelsgrens",
         "answer_type": "enum",
         "options": [
-          {
-            "value": "SIDE_GARDEN",
-            "label": "Zijtuin"
-          },
-          {
-            "value": "REAR_GARDEN",
-            "label": "Achtertuin"
-          }
-        ]
-       "legal_basis": "Artikel 4, 4° — afstandsregels in zijtuin (≥3 m) of achtertuin (≥2 m)"
+          {"value": "SIDE_GARDEN", "label": "Zijtuin"},
+          {"value": "REAR_GARDEN", "label": "Achtertuin"}
+        ],
+        "legal_basis": "Artikel 4, 4° — afstandsregels per tuindeel",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "C_06S",
         "route": "C",
@@ -202,9 +226,13 @@
         "required_if": {
           "question": "C_05",
           "equals": "SIDE_GARDEN"
-        }
-      "legal_basis": "Artikel 4, 4° — zijtuin: afstand tot perceelsgrens ≥ 3 m"
+        },
+        "legal_basis": "Artikel 4, 4° — zijtuin: afstand ≥ 3 m",
+        "is_required": false,
+        "is_conditional": true,
+        "conditional_on": "C_05=SIDE_GARDEN"
       },
+
       {
         "id": "C_06R",
         "route": "C",
@@ -214,17 +242,24 @@
         "required_if": {
           "question": "C_05",
           "equals": "REAR_GARDEN"
-        }
-      "legal_basis": "Artikel 4, 4° — achtertuin: afstand tot perceelsgrens ≥ 2 m" 
+        },
+        "legal_basis": "Artikel 4, 4° — achtertuin: afstand ≥ 2 m",
+        "is_required": false,
+        "is_conditional": true,
+        "conditional_on": "C_05=REAR_GARDEN"
       },
+
       {
         "id": "C_07",
         "route": "C",
         "section": "ROUTE",
         "text": "Hoogte (m) bijgebouw (max. 4 m)",
         "answer_type": "number",
-        "legal_basis": "Artikel 4, 5° — maximale hoogte bijgebouw 4 m"
+        "legal_basis": "Artikel 4, 5° — maximale hoogte bijgebouw 4 m",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "C_08",
         "route": "C",
@@ -232,120 +267,165 @@
         "text": "Hoofdgebouw op/tegen perceelsgrens? (afwijkingstraject)",
         "answer_type": "boolean",
         "legal_basis": "Artikel 4 (afwijkingspad) — hoofdgebouw op/tegen perceelsgrens",
-        "fail_message": "Afwijkingspad kan enkel als het hoofdgebouw op/tegen de perceelsgrens staat."
+        "fail_message": "Afwijkingspad kan enkel als het hoofdgebouw op/tegen de perceelsgrens staat.",
+        "is_required": false,
+        "is_conditional": false
       },
+
       {
         "id": "C_09",
         "route": "C",
         "section": "ROUTE",
-        "text": "Bijgebouw eveneens op/tegen perceelsgrens tegen bestaand aanpalend, zonder wijziging scheidingsmuur?",
+        "text": "Bijgebouw op/tegen perceelsgrens tegen bestaand aanpalend gebouw (geen wijziging scheidingsmuur)?",
         "answer_type": "boolean",
         "required_if": {
           "question": "C_08",
-          "equals": true
-        }
-        "legal_basis": "Artikel 4 (afwijkingspad) — bijgebouw op/tegen perceelsgrens tegen bestaand aanpalend, zonder wijziging scheidingsmuur",
-        "fail_message": "Bij het afwijkingspad moet het bijgebouw op/tegen de perceelsgrens tegen een bestaand aanpalend gebouw komen, zonder de bestaande scheidingsmuur te wijzigen."
+          "equals": "true"
+        },
+        "legal_basis": "Artikel 4 (afwijkingspad) — bijgebouw op/tegen perceelsgrens",
+        "fail_message": "Het bijgebouw moet aansluiten op een bestaand aanpalend gebouw zonder de scheidingsmuur te wijzigen.",
+        "is_required": false,
+        "is_conditional": true,
+        "conditional_on": "C_08=true"
       },
+
       {
         "id": "C_10",
         "route": "C",
         "section": "ROUTE",
-        "text": "Bouwdiepte nieuw bijgebouw Overschrijdt NIET de bouwdiepte aanpalend gebouw? (ja=OK)",
+        "text": "Nieuwe bouwdiepte overschrijdt NIET de bouwdiepte aanpalend gebouw?",
         "answer_type": "boolean",
         "required_if": {
           "question": "C_08",
-          "equals": true
-        }
-        "legal_basis": "Artikel 4 (afwijkingspad) — bouwdiepte nieuwe aanbouw ≤ bouwdiepte aanpalend",
-        "fail_message": "Bij het afwijkingspad mag de bouwdiepte van het nieuwe bijgebouw de bouwdiepte van het aanpalende gebouw niet overschrijden."
+          "equals": "true"
+        },
+        "legal_basis": "Artikel 4 (afwijkingspad) — bouwdiepte ≤ aanpalend",
+        "fail_message": "De bouwdiepte van het bijgebouw mag de bouwdiepte van het aanpalende gebouw niet overschrijden.",
+        "is_required": false,
+        "is_conditional": true,
+        "conditional_on": "C_08=true"
       },
+
       {
         "id": "C_11",
         "route": "C",
         "section": "ROUTE",
         "text": "Fysiek aansluitende aanhorigheid met bouwtechnische aansluiting/steun?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 4 (definitie) — bijgebouw = fysiek aansluitende aanhorigheid met bouwtechnische aansluiting/steun",
-        "fail_message": "Het gaat niet om een fysiek aansluitende aanhorigheid die bouwtechnisch aansluit of steunt op het hoofdgebouw."
-      },
+        "legal_basis": "Artikel 4 (definitie) — bijgebouw = fysiek aansluitende aanhorigheid",
+        "fail_message": "Het element is geen fysiek aansluitende aanhorigheid met bouwtechnische steun op het hoofdgebouw.",
+        "is_required": true,
+        "is_conditional": false
+      }
+      ,
+      /* ============================
+         ROUTE D — Artikel 5 §1 VCRO
+         Constructies (geen gebouwen of verhardingen)
+         ============================ */
       {
         "id": "D_01",
         "route": "D",
         "section": "ROUTE",
         "text": "Constructies (géén gebouwen of verhardingen)?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §1, 1° — het betreft constructies, geen gebouwen of verhardingen",
-        "fail_message": "Deze categorie is enkel voor constructies (geen gebouwen of verhardingen)."
+        "legal_basis": "Artikel 5 §1, 1° — constructies, geen gebouwen of verhardingen",
+        "fail_message": "Deze categorie is enkel van toepassing op constructies die geen gebouwen of verhardingen zijn.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "D_02",
         "route": "D",
         "section": "ROUTE",
         "text": "In functie van bestaande industrie/bedrijvigheid?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §1, 2° — in functie van bestaande industrie en bedrijvigheid",
-        "fail_message": "De constructies staan niet in functie van bestaande industrie/bedrijvigheid."
+        "legal_basis": "Artikel 5 §1, 2° — in functie van bestaande industrie/bedrijvigheid",
+        "fail_message": "De constructie staat niet in functie van bestaande industrie of bedrijvigheid.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "D_03",
         "route": "D",
         "section": "ROUTE",
         "text": "Binnen 50 m van (ge)vergund gebouw of (ge)vergunde verharding?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §1, 3° — binnen 50 m van (ge)vergund gebouw/verharding",
-        "fail_message": "De constructies liggen niet binnen 50 m van een (ge)vergund gebouw of (ge)vergunde verharding."
+        "legal_basis": "Artikel 5 §1, 3° — binnen 50 m van (ge)vergund gebouw of verharding",
+        "fail_message": "De constructie ligt niet binnen 50 meter van een (ge)vergund gebouw of verharding.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "D_04",
         "route": "D",
         "section": "ROUTE",
         "text": "Hoogte (m) (max. 20 m)",
         "answer_type": "number",
-        "legal_basis": "Artikel 5 §1, 4° — hoogte ≤ 20 m"
+        "legal_basis": "Artikel 5 §1, 4° — maximale hoogte 20 m",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "D_05",
         "route": "D",
         "section": "ROUTE",
-        "text": "Gezamenlijke opp. (m²) vergunningsvrij+gemeld (max. 300 m²)",
+        "text": "Gezamenlijke opp. vergunningsvrij + gemeld (max. 300 m²)",
         "answer_type": "number",
-        "legal_basis": "Artikel 5 §1, 5° — gezamenlijke oppervlakte vergunningsvrij + gemeld ≤ 300 m²"
+        "legal_basis": "Artikel 5 §1, 5° — totale oppervlakte ≤ 300 m²",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "D_06",
         "route": "D",
         "section": "ROUTE",
-        "text": "Afstand (m) tot woongebied (ruime zin) of ruimtelijk kwetsbaar (niet park) (min. 30 m)",
+        "text": "Afstand tot woongebied of ruimtelijk kwetsbaar gebied (min. 30 m)",
         "answer_type": "number",
-        "legal_basis": "Artikel 5 §1, 6° a) — afstand ≥ 30 m tot woongebied (ruime zin) en ruimtelijk kwetsbaar (niet park)",
-        "fail_message": "De afstand tot woongebied/ruimtelijk kwetsbaar gebied is onvoldoende."
+        "legal_basis": "Artikel 5 §1, 6° a) — afstand ≥ 30 m",
+        "fail_message": "De afstand tot woongebied of ruimtelijk kwetsbaar gebied is kleiner dan 30 meter.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "D_07",
         "route": "D",
         "section": "ROUTE",
-        "text": "Afstand (m) tot alle perceelsgrenzen (min. 5 m)",
+        "text": "Afstand tot perceelsgrenzen (min. 5 m)",
         "answer_type": "number",
-        "legal_basis": "Artikel 5 §1, 6° b) — afstand ≥ 5 m tot alle perceelsgrenzen"
+        "legal_basis": "Artikel 5 §1, 6° b) — afstand ≥ 5 m",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "D_08",
         "route": "D",
         "section": "ROUTE",
-        "text": "Bereikbaarheid hulpdiensten (incl. brandweer) NIET verminderd?",
+        "text": "Bereikbaarheid hulpdiensten NIET verminderd?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 5 §1, 7° — bereikbaarheid hulpdiensten mag niet verminderen",
-        "fail_message": "De bereikbaarheid voor hulpdiensten (incl. brandweer) wordt verminderd. Dat is niet toegelaten."
+        "fail_message": "De bereikbaarheid voor hulpdiensten wordt verminderd. Dit is niet toegestaan volgens artikel 5.",
+        "is_required": true,
+        "is_conditional": false
       },
+
+      /* Havenvoorwaarden — Art. 5 §4 VCRO */
       {
         "id": "D_H1",
         "route": "D",
         "section": "ROUTE",
         "text": "Binnen grenzen zeehavens (Oostende/Zeebrugge/Gent/Antwerpen)?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §4, 1° — binnen afbakening zeehavens (Oostende, Zeebrugge, Gent, Antwerpen)",
-        "fail_message": "De handelingen liggen niet binnen de afgebakende zeehavens (voorwaarde van §4)."
+        "legal_basis": "Artikel 5 §4, 1° — binnen afbakening zeehavens",
+        "fail_message": "De handelingen liggen niet binnen de afgebakende zeehavens.",
+        "is_required": true,
+        "is_conditional": false
       },
       {
         "id": "D_H2",
@@ -354,7 +434,9 @@
         "text": "Niet voor de rooilijn?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 5 §4, 2° — niet voor de rooilijn",
-        "fail_message": "De handelingen liggen voor de rooilijn, wat in §4 uitdrukkelijk uitgesloten is."
+        "fail_message": "De handelingen liggen voor de rooilijn. §4 sluit dit uit.",
+        "is_required": true,
+        "is_conditional": false
       },
       {
         "id": "D_H3",
@@ -363,7 +445,9 @@
         "text": "Gaat NIET gepaard met ontbossing?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 5 §4, 3° — geen ontbossing",
-        "fail_message": "De handelingen gaan gepaard met ontbossing, wat §4 uitsluit."
+        "fail_message": "De handelingen gaan gepaard met ontbossing, wat uitgesloten is volgens §4.",
+        "is_required": true,
+        "is_conditional": false
       },
       {
         "id": "D_H4",
@@ -371,9 +455,16 @@
         "section": "ROUTE",
         "text": "Niet strijdig met stedenbouwkundige voorschriften?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §4, 4° — niet strijdig met stedenbouwkundige voorschriften",
-        "fail_message": "De handelingen zijn strijdig met stedenbouwkundige voorschriften en kunnen niet als melding."
+        "legal_basis": "Artikel 5 §4, 4° — niet strijdig met voorschriften",
+        "fail_message": "De handelingen zijn strijdig met stedenbouwkundige voorschriften.",
+        "is_required": true,
+        "is_conditional": false
       },
+
+      /* ============================
+         ROUTE E — Artikel 5 §2 VCRO
+         Verhardingen
+         ============================ */
       {
         "id": "E_01",
         "route": "E",
@@ -381,76 +472,103 @@
         "text": "Aanleg/uitbreiding verhardingen?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 5 §2 (inleidend) — aanleggen of uitbreiden van verhardingen",
-        "fail_message": "De handelingen betreffen geen verhardingen (aanleg/uitbreiding)."
+        "fail_message": "De handelingen betreffen geen aanleggen of uitbreiden van verhardingen.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "E_02",
         "route": "E",
         "section": "ROUTE",
         "text": "In functie van bestaande industrie/bedrijvigheid?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §2, 1° — in functie van bestaande industrie en bedrijvigheid",
-        "fail_message": "De verhardingen staan niet in functie van bestaande industrie/bedrijvigheid."
+        "legal_basis": "Artikel 5 §2, 1° — functie industrieel/bedrijvig",
+        "fail_message": "De verhardingen staan niet in functie van bestaande industrie/bedrijvigheid.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "E_03",
         "route": "E",
         "section": "ROUTE",
         "text": "Bestaat BPA of RUP voor de plaats?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §2, 2° — er bestaat een BPA of RUP voor de plaats",
-        "fail_message": "Voor de locatie bestaat geen BPA/RUP, terwijl dit vereist is."
+        "legal_basis": "Artikel 5 §2, 2° — BPA/RUP vereist",
+        "fail_message": "Voor deze locatie bestaat geen BPA of RUP, wat verplicht is voor deze meldingscategorie.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "E_04",
         "route": "E",
         "section": "ROUTE",
-        "text": "Binnen 50 m van (ge)vergund gebouw of (ge)vergunde verharding?",
+        "text": "Binnen 50 m van (ge)vergund gebouw of verharding?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §2, 3° — binnen 50 m van (ge)vergund gebouw/verharding",
-        "fail_message": "Niet binnen 50 m van (ge)vergund gebouw/verharding."
+        "legal_basis": "Artikel 5 §2, 3° — binnen 50 m van (ge)vergunde elementen",
+        "fail_message": "De verharding ligt niet binnen 50 m van een (ge)vergund gebouw/verharding.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "E_05",
         "route": "E",
         "section": "ROUTE",
-        "text": "Gezamenlijke opp. (m²) vergunningsvrij+gemeld (max. 500 m² en ≤100% reeds vergund)",
+        "text": "Gezamenlijke opp. vergunningsvrij + gemeld (max. 500 m² en ≤ 100% vergund)",
         "answer_type": "number",
-        "legal_basis": "Artikel 5 §2, 4° — gezamenlijke opp. ≤ 500 m² én ≤ 100% reeds vergunde verharding"
+        "legal_basis": "Artikel 5 §2, 4° — oppervlakte ≤ 500 m² én ≤ 100% reeds vergunde verharding",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "E_06",
         "route": "E",
         "section": "ROUTE",
-        "text": "Bevestig: opp. ≤ 100% van reeds vergunde verharding",
+        "text": "Opp. ≤ 100% van reeds vergunde verharding?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §2, 4° — bevestiging: ≤ 100% van reeds vergunde verharding",
-        "fail_message": "De gezamenlijke verhardingsoppervlakte overschrijdt de reeds vergunde (maximale) grondoppervlakte."
+        "legal_basis": "Artikel 5 §2, 4° — maximale verhouding t.o.v. reeds vergunde verharding",
+        "fail_message": "De totale verhardingsoppervlakte overschrijdt de reeds vergunde maximale oppervlakte.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "E_07",
         "route": "E",
         "section": "ROUTE",
-        "text": "Afstand (m) tot woongebied (ruime zin) of ruimtelijk kwetsbaar (niet park) (min. 10 m)",
+        "text": "Afstand tot woongebied/kwetsbaar gebied (min. 10 m)?",
         "answer_type": "number",
-        "legal_basis": "Artikel 5 §2, 5° a) — afstand ≥ 10 m tot woongebied (ruime zin) / ruimtelijk kwetsbaar (niet park)"
+        "legal_basis": "Artikel 5 §2, 5° a) — afstand ≥ 10 m",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "E_08",
         "route": "E",
         "section": "ROUTE",
-        "text": "Afstand (m) tot alle perceelsgrenzen (min. 3 m)",
+        "text": "Afstand tot perceelsgrenzen (min. 3 m)",
         "answer_type": "number",
-        "legal_basis": "Artikel 5 §2, 5° b) — afstand ≥ 3 m tot alle perceelsgrenzen"
+        "legal_basis": "Artikel 5 §2, 5° b) — afstand ≥ 3 m",
+        "is_required": true,
+        "is_conditional": false
       },
+
+      /* Havenvoorwaarden (zelfde als Categorie D/F) */
       {
         "id": "E_H1",
         "route": "E",
         "section": "ROUTE",
-        "text": "Binnen grenzen zeehavens (Oostende/Zeebrugge/Gent/Antwerpen)?",
+        "text": "Binnen zeehavengebied?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 5 §4, 1° — binnen afbakening zeehavens",
-        "fail_message": "Niet binnen de afgebakende zeehavens (voorwaarde van §4)."
+        "fail_message": "Niet binnen het afgebakende zeehavengebied.",
+        "is_required": true,
+        "is_conditional": false
       },
       {
         "id": "E_H2",
@@ -459,7 +577,9 @@
         "text": "Niet voor de rooilijn?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 5 §4, 2° — niet voor de rooilijn",
-        "fail_message": "Voor de rooilijn: uitgesloten door §4."
+        "fail_message": "De verharding ligt voor de rooilijn. Dit is uitgesloten.",
+        "is_required": true,
+        "is_conditional": false
       },
       {
         "id": "E_H3",
@@ -468,7 +588,9 @@
         "text": "Gaat NIET gepaard met ontbossing?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 5 §4, 3° — geen ontbossing",
-        "fail_message": "De handelingen gaan gepaard met ontbossing: melding uitgesloten."
+        "fail_message": "De handelingen gaan gepaard met ontbossing, wat volgens §4 verboden is.",
+        "is_required": true,
+        "is_conditional": false
       },
       {
         "id": "E_H4",
@@ -476,144 +598,199 @@
         "section": "ROUTE",
         "text": "Niet strijdig met stedenbouwkundige voorschriften?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §4, 4° — niet strijdig met stedenbouwkundige voorschriften",
-        "fail_message": "Strijd met stedenbouwkundige voorschriften: geen melding mogelijk."
+        "legal_basis": "Artikel 5 §4, 4° — niet strijdig",
+        "fail_message": "De verharding is strijdig met stedenbouwkundige voorschriften.",
+        "is_required": true,
+        "is_conditional": false
       },
+
+      /* ============================
+         ROUTE F — Artikel 5 §3 VCRO
+         Gebouwen
+         ============================ */
       {
         "id": "F_01",
         "route": "F",
         "section": "ROUTE",
-        "text": "Gebouw met functie industrie/bedrijvigheid (geen bedrijfswoning), in relatie tot bestaande industrie/bedrijvigheid?",
+        "text": "Gebouw met functie industrie/bedrijvigheid (geen bedrijfswoning)?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §3, 1° — functie industrie/bedrijvigheid, in relatie tot bestaande, geen bedrijfswoning",
-        "fail_message": "Het gebouw heeft niet de vereiste functie/context (of is een bedrijfswoning), waardoor melding niet kan."
+        "legal_basis": "Artikel 5 §3, 1° — functie industrie/bedrijvigheid en geen bedrijfswoning",
+        "fail_message": "Het gebouw heeft niet de vereiste functie of betreft een bedrijfswoning.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "F_02",
         "route": "F",
         "section": "ROUTE",
         "text": "Bestaat BPA of RUP voor de plaats?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §3, 2° — er bestaat een BPA of RUP voor de plaats",
-        "fail_message": "Voor de locatie bestaat geen BPA/RUP, terwijl dit voor deze route verplicht is."
+        "legal_basis": "Artikel 5 §3, 2° — BPA/RUP vereist",
+        "fail_message": "Voor de locatie bestaat geen BPA of RUP, wat verplicht is voor deze meldingscategorie.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "F_03",
         "route": "F",
         "section": "ROUTE",
         "text": "Binnen 50 m van (ge)vergund gebouw?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §3, 3° — binnen 50 m van (ge)vergund gebouw",
-        "fail_message": "Het gebouw ligt niet binnen 50 m van een (ge)vergund gebouw."
+        "legal_basis": "Artikel 5 §3, 3° — binnen 50 m",
+        "fail_message": "Het gebouw ligt niet binnen 50 meter van een vergund gebouw.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "F_04",
         "route": "F",
         "section": "ROUTE",
         "text": "Wordt het gebouw aangebouwd aan een (ge)vergund gebouw?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §3, 4° — aangebouwd of niet (met bijhorende voorwaarden)"
+        "legal_basis": "Artikel 5 §3, 4° — aangebouwd of vrijstaand",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "F_05",
         "route": "F",
         "section": "ROUTE",
-        "text": "Brandcompartimentering blijft van toepassing (indien aangebouwd)?",
+        "text": "Brandcompartimentering blijft voldoen? (indien aangebouwd)",
         "answer_type": "boolean",
         "required_if": {
           "question": "F_04",
-          "equals": true
-        }
-        "legal_basis": "Artikel 5 §3, 4° (aangebouwd) — brandcompartimentering blijft van toepassing",
-        "fail_message": "Bij aanbouw moeten de voorwaarden inzake brandcompartimentering gerespecteerd blijven."
+          "equals": "true"
+        },
+        "legal_basis": "Artikel 5 §3, 4° — brandcompartimentering behouden (aangebouwd)",
+        "fail_message": "Bij aanbouw moet de brandcompartimentering blijven voldoen.",
+        "is_required": false,
+        "is_conditional": true,
+        "conditional_on": "F_04=true"
       },
+
       {
         "id": "F_06",
         "route": "F",
         "section": "ROUTE",
-        "text": "Afstand (m) tot andere gebouwen (min. 5 m indien NIET aangebouwd)",
+        "text": "Afstand tot andere gebouwen (min. 5 m bij NIET aangebouwd)",
         "answer_type": "number",
         "required_if": {
           "question": "F_04",
-          "equals": false
-        }
-        "legal_basis": "Artikel 5 §3, 4° (niet aangebouwd) — afstand ≥ 5 m tot andere gebouwen"
+          "equals": "false"
+        },
+        "legal_basis": "Artikel 5 §3, 4° — afstand ≥ 5 m bij vrijstaand gebouw",
+        "is_required": false,
+        "is_conditional": true,
+        "conditional_on": "F_04=false"
       },
+
       {
         "id": "F_07",
         "route": "F",
         "section": "ROUTE",
-        "text": "Gezamenlijke grondopp. (m²) vergunningsvrij+gemeld (max. 500 m² en ≤100% reeds vergund)",
+        "text": "Grondoppervlakte vergunningsvrij+gemeld (max. 500 m² en ≤ 100% vergund)",
         "answer_type": "number",
-        "legal_basis": "Artikel 5 §3, 5° — gezamenlijke grondopp. ≤ 500 m² én ≤ 100% reeds vergunde gebouwen"
+        "legal_basis": "Artikel 5 §3, 5° — oppervlakte ≤ 500 m² én ≤ 100% vergunde gebouwen",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "F_08",
         "route": "F",
         "section": "ROUTE",
-        "text": "Bevestig: opp. ≤ 100% van reeds vergunde gebouwen",
+        "text": "Opp. ≤ 100% van reeds vergunde gebouwen?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §3, 5° — bevestiging: ≤ 100% van reeds vergunde grondoppervlakte",
-        "fail_message": "De gezamenlijke grondoppervlakte overschrijdt de reeds vergunde (maximale) oppervlakte."
+        "legal_basis": "Artikel 5 §3, 5° — maximale verhouding t.o.v. vergunde gebouwen",
+        "fail_message": "De totale oppervlakte overschrijdt de reeds vergunde maximale oppervlakte.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "F_09",
         "route": "F",
         "section": "ROUTE",
-        "text": "Afstand (m) tot woongebied (ruime zin) of ruimtelijk kwetsbaar (niet park) (min. 30 m)",
+        "text": "Afstand tot woongebied of kwetsbaar gebied (min. 30 m)?",
         "answer_type": "number",
-        "legal_basis": "Artikel 5 §3, 6° a) — afstand ≥ 30 m tot woongebied (ruime zin) / ruimtelijk kwetsbaar (niet park)"
+        "legal_basis": "Artikel 5 §3, 6° a) — afstand ≥ 30 m",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "F_10",
         "route": "F",
         "section": "ROUTE",
-        "text": "Afstand (m) tot alle perceelsgrenzen (min. 5 m)",
+        "text": "Afstand tot perceelsgrenzen (min. 5 m)",
         "answer_type": "number",
-        "legal_basis": "Artikel 5 §3, 6° b) — afstand ≥ 5 m tot alle perceelsgrenzen"
+        "legal_basis": "Artikel 5 §3, 6° b) — afstand ≥ 5 m",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "F_11",
         "route": "F",
         "section": "ROUTE",
         "text": "Aantal bouwlagen (max. 1)",
         "answer_type": "number",
-        "legal_basis": "Artikel 5 §3, 7° — maximaal 1 bouwlaag"
+        "legal_basis": "Artikel 5 §3, 7° — maximaal één bouwlaag",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "F_12",
         "route": "F",
         "section": "ROUTE",
-        "text": "Hoogte (m) (max. 20 m)",
+        "text": "Hoogte (max. 20 m)",
         "answer_type": "number",
-        "legal_basis": "Artikel 5 §3, 7° — hoogte ≤ 20 m"
+        "legal_basis": "Artikel 5 §3, 7° — maximale hoogte 20 m",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "F_13",
         "route": "F",
         "section": "ROUTE",
-        "text": "Bereikbaarheid hulpdiensten (incl. brandweer) NIET verminderd?",
+        "text": "Bereikbaarheid hulpdiensten NIET verminderd?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 5 §3, 8° — bereikbaarheid hulpdiensten mag niet verminderen",
-        "fail_message": "De bereikbaarheid voor hulpdiensten (incl. brandweer) mag niet verminderen."
+        "fail_message": "De bereikbaarheid voor hulpdiensten wordt verminderd. Dit is niet toegestaan.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "F_14",
         "route": "F",
         "section": "ROUTE",
         "text": "Brandbelasting (MJ/m²) (< 350 MJ/m²)",
         "answer_type": "number",
-        "legal_basis": "Artikel 5 §3, 9° — brandbelasting < 350 MJ/m²"
+        "legal_basis": "Artikel 5 §3, 9° — brandbelasting < 350 MJ/m²",
+        "is_required": true,
+        "is_conditional": false
       },
+
+      /* Havenvoorwaarden opnieuw voor route F */
       {
         "id": "F_H1",
         "route": "F",
         "section": "ROUTE",
-        "text": "Binnen grenzen zeehavens (Oostende/Zeebrugge/Gent/Antwerpen)?",
+        "text": "Binnen zeehavengebied?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §4, 1° — binnen afbakening zeehavens",
-        "fail_message": "Niet binnen de afgebakende zeehavens (voorwaarde van §4)."
+        "legal_basis": "Artikel 5 §4, 1° — zeehaverngrens",
+        "fail_message": "Niet binnen afbakening zeehavens.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "F_H2",
         "route": "F",
@@ -621,8 +798,11 @@
         "text": "Niet voor de rooilijn?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 5 §4, 2° — niet voor de rooilijn",
-        "fail_message": "Voor de rooilijn: uitgesloten door §4."        
+        "fail_message": "De handelingen liggen voor de rooilijn.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "F_H3",
         "route": "F",
@@ -630,223 +810,272 @@
         "text": "Gaat NIET gepaard met ontbossing?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 5 §4, 3° — geen ontbossing",
-        "fail_message": "Gepaard met ontbossing: melding uitgesloten."
+        "fail_message": "De handelingen gaan gepaard met ontbossing.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "F_H4",
         "route": "F",
         "section": "ROUTE",
         "text": "Niet strijdig met stedenbouwkundige voorschriften?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5 §4, 4° — niet strijdig met stedenbouwkundige voorschriften",
-        "fail_message": "Strijd met stedenbouwkundige voorschriften: geen melding mogelijk."       
-      },
+        "legal_basis": "Artikel 5 §4, 4° — niet strijdig",
+        "fail_message": "De handelingen zijn strijdig met stedenbouwkundige voorschriften.",
+        "is_required": true,
+        "is_conditional": false
+      }
+      ,
+      /* ============================
+         ROUTE G — Artikel 5/1 VCRO
+         Ondergeschikte wooneenheid
+         ============================ */
       {
         "id": "G_01",
         "route": "G",
         "section": "ROUTE",
         "text": "Opsplitsen woning / wijzigen aantal woongelegenheden?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5/1 §1 (inleidend) — opsplitsen woning / wijzigen aantal woongelegenheden",
-        "fail_message": "De handeling betreft geen opsplitsing/wijziging van het aantal woongelegenheden in de zin van art. 5/1."
+        "legal_basis": "Artikel 5/1 §1 — opsplitsen/wijzigen aantal woongelegenheden",
+        "fail_message": "De handeling betreft geen opsplitsing of wijziging van het aantal woongelegenheden onder art. 5/1.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "G_02",
         "route": "G",
         "section": "ROUTE",
-        "text": "Één ondergeschikte wooneenheid in bestaande woning?",
+        "text": "Exact één ondergeschikte wooneenheid in bestaande woning?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5/1 §1, 1° — één ondergeschikte wooneenheid in bestaande woning",
-        "fail_message": "Er wordt niet precies één ondergeschikte wooneenheid gecreëerd in een bestaande woning."
+        "legal_basis": "Artikel 5/1 §1, 1° — één ondergeschikte wooneenheid",
+        "fail_message": "Er wordt niet precies één ondergeschikte wooneenheid gecreëerd in een bestaande woning.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "G_03",
         "route": "G",
         "section": "ROUTE",
         "text": "Ondergeschikte vormt één fysiek geheel met hoofdwooneenheid?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5/1 §1, 2° — ondergeschikte vormt één fysiek geheel met hoofdwooneenheid",
-        "fail_message": "De ondergeschikte wooneenheid vormt geen fysiek geheel met de hoofdwooneenheid."
+        "legal_basis": "Artikel 5/1 §1, 2° — één fysiek geheel",
+        "fail_message": "De ondergeschikte wooneenheid vormt geen fysiek geheel met de hoofdwooneenheid.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "G_04",
         "route": "G",
         "section": "ROUTE",
-        "text": "Ondergeschikte (excl. gedeelde) ≤ 1/3 brutovloeropp. van volledige woning?",
+        "text": "Ondergeschikte (excl. gedeelde) ≤ 1/3 van brutovloeroppervlakte woning?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5/1 §1, 3° — ondergeschikte ≤ 1/3 brutovloeropp. (excl. gedeelde ruimten)",
-        "fail_message": "De ondergeschikte wooneenheid overschrijdt 1/3 van de brutovloeroppervlakte (exclusief gedeelde ruimten)."
+        "legal_basis": "Artikel 5/1 §1, 3° — ≤ 1/3 van de brutovloeroppervlakte",
+        "fail_message": "De ondergeschikte wooneenheid overschrijdt 1/3 van de brutovloeroppervlakte.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "G_05",
         "route": "G",
         "section": "ROUTE",
-        "text": "Doelgroep? (Fedasil-uitstroom / onbewoonbaar / tijdelijke bescherming)",
+        "text": "Doelgroep (Fedasil-uitstroom / onbewoonbaar / tijdelijke bescherming)?",
         "answer_type": "enum",
         "options": [
-          {
-            "value": "FEDASIL",
-            "label": "Fedasil-uitstroom"
-          },
-          {
-            "value": "UNINHABITABLE",
-            "label": "Onbewoonbaar (onvoorziene omstandigheden)"
-          },
-          {
-            "value": "TEMP_PROTECTION",
-            "label": "Tijdelijke bescherming (wet 15/12/1980)"
-          }
-        ]
-        "legal_basis": "Artikel 5/1 §1, 4° — doelgroep: Fedasil‑uitstroom / onbewoonbaar / tijdelijke bescherming"
+          {"value":"FEDASIL","label":"Fedasil-uitstroom"},
+          {"value":"UNINHABITABLE","label":"Onbewoonbaar verklaard"},
+          {"value":"TEMP_PROTECTION","label":"Tijdelijke bescherming"}
+        ],
+        "legal_basis": "Artikel 5/1 §1, 4° — doelgroepcriteria",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "G_06",
         "route": "G",
         "section": "ROUTE",
-        "text": "Tijdelijkheid binnen maxima (c: +6m na einde; a/b: max 3 jaar per goed)?",
+        "text": "Tijdelijkheid binnen maxima (3 jaar of +6 maanden)?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5/1 §1, 5° — tijdelijkheid: (c) max 6 m na einde; (a/b) max 3 jaar per goed",
-        "fail_message": "De voorziene duurtijd overschrijdt de maximale toegestane tijdelijkheid."
+        "legal_basis": "Artikel 5/1 §1, 5° — tijdelijkheid",
+        "fail_message": "De voorziene tijdsduur overschrijdt de maximale periode onder art. 5/1.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "G_07",
         "route": "G",
         "section": "ROUTE",
         "text": "(Blote) eigendom hoofd- en ondergeschikte eenheid bij dezelfde titularis(sen)?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5/1 §1, 6° — (blote) eigendom bij dezelfde titularis(sen)",
-        "fail_message": "Hoofd- en ondergeschikte wooneenheid berusten niet (minstens in blote eigendom) bij dezelfde titularis(sen)."
+        "legal_basis": "Artikel 5/1 §1, 6° — eigendomsvereiste",
+        "fail_message": "Hoofd- en ondergeschikte eenheden behoren niet toe aan dezelfde titularis(sen).",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "G_08",
         "route": "G",
         "section": "ROUTE",
-        "text": "Beëindigen van de splitsing/wijziging (ook meldingsplichtig)?",
+        "text": "Beëindigen van de opsplitsing ook meldingsplichtig?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5/1 §2 — beëindiging is eveneens meldingsplichtig",
-        "fail_message": "Ook het beëindigen van de opsplitsing/wijziging is meldingsplichtig."      
+        "legal_basis": "Artikel 5/1 §2 — beëindiging meldingsplichtig",
+        "fail_message": "Het beëindigen van de ondergeschikte wooneenheid moet worden gemeld.",
+        "is_required": false,
+        "is_conditional": false
       },
+
+      /* ============================
+         ROUTE H — Artikel 5/2 VCRO
+         Tijdelijke verplaatsbare woonconstructies
+         ============================ */
       {
         "id": "H_01",
         "route": "H",
         "section": "ROUTE",
         "text": "Tijdelijke verplaatsbare constructies voor bewoning/aanverwante functies?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5/2 (inleidend) — tijdelijke verplaatsbare constructies voor bewoning/aanverwante functies",
-        "fail_message": "Het betreft geen tijdelijke verplaatsbare constructies voor bewoning of aanverwante functies."       
+        "legal_basis": "Artikel 5/2 (inleidend) — tijdelijke verplaatsbare woonconstructies",
+        "fail_message": "Het betreft geen tijdelijke verplaatsbare constructies voor woonfuncties.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "H_02",
         "route": "H",
         "section": "ROUTE",
-        "text": "Plaatsing door of in opdracht van overheid?",
+        "text": "Plaatsing door of in opdracht van de overheid?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5/2, 1° — plaatsing door of in opdracht van de overheid",
-        "fail_message": "De plaatsing gebeurt niet door of in opdracht van de overheid."
+        "legal_basis": "Artikel 5/2, 1° — overheid verplicht",
+        "fail_message": "Deze melding is enkel mogelijk wanneer de overheid de plaatsing uitvoert of opdraagt.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "H_03",
         "route": "H",
         "section": "ROUTE",
-        "text": "Doelgroep? (Fedasil-uitstroom / onbewoonbaar / tijdelijke bescherming)",
+        "text": "Doelgroep (Fedasil-uitstroom / onbewoonbaar / tijdelijke bescherming)?",
         "answer_type": "enum",
         "options": [
-          {
-            "value": "FEDASIL",
-            "label": "Fedasil-uitstroom"
-          },
-          {
-            "value": "UNINHABITABLE",
-            "label": "Onbewoonbaar (onvoorziene omstandigheden)"
-          },
-          {
-            "value": "TEMP_PROTECTION",
-            "label": "Tijdelijke bescherming (wet 15/12/1980)"
-          }
-        ]
-      "legal_basis": "Artikel 5/2, 1° — doelgroep: Fedasil‑uitstroom / onbewoonbaar / tijdelijke bescherming"
+          {"value":"FEDASIL","label":"Fedasil-uitstroom"},
+          {"value":"UNINHABITABLE","label":"Onbewoonbaar verklaard"},
+          {"value":"TEMP_PROTECTION","label":"Tijdelijke bescherming"}
+        ],
+        "legal_basis": "Artikel 5/2, 1° — doelgroepcriteria",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "H_04",
         "route": "H",
         "section": "ROUTE",
-        "text": "Tijdelijkheid binnen maxima (c: +6m na einde; a/b: max 3 jaar op 'SPECIAL' / max 2 jaar 'OTHER')?",
+        "text": "Tijdelijkheid binnen maxima?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5/2, 2° — tijdelijkheid: (c) max 6 m na einde; (a/b) max 3 jaar SPECIAL / max 2 jaar OTHER",
-        "fail_message": "De voorziene duurtijd overschrijdt de maximaal toegestane periode."
+        "legal_basis": "Artikel 5/2, 2° — tijdsbeperking afhankelijk van locatie",
+        "fail_message": "De geplande tijdsduur overschrijdt het maximaal toegelaten verblijf.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "H_05",
         "route": "H",
         "section": "ROUTE",
-        "text": "Bestemming van het goed",
+        "text": "Bestemming van het goed (SPECIAL / OTHER)?",
         "answer_type": "enum",
         "options": [
-          {
-            "value": "SPECIAL",
-            "label": "Militair domein of gebied gemeenschaps-/nutsvoorzieningen"
-          },
-          {
-            "value": "OTHER",
-            "label": "Andere gevallen"
-          }
-        ]
-      "legal_basis": "Artikel 5/2, 2° en 3° — type bestemming (SPECIAL/OTHER) bepaalt maximale duur en oppervlakte"
+          {"value":"SPECIAL","label":"Militair/nuts/gemeenschapsvoorziening"},
+          {"value":"OTHER","label":"Andere gebieden"}
+        ],
+        "legal_basis": "Artikel 5/2, 2° en 3° — locatiecategorie SPECIAL of OTHER",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "H_06_SPECIAL",
         "route": "H",
         "section": "ROUTE",
-        "text": "Gezamenlijke opp. (m²) (max. 1000 m² op SPECIAL)",
+        "text": "Opp. max 1000 m² (SPECIAL)",
         "answer_type": "number",
         "required_if": {
           "question": "H_05",
           "equals": "SPECIAL"
-        }
-      "legal_basis": "Artikel 5/2, 3° — gezamenlijke oppervlakte ≤ 1000 m² (SPECIAL: militair/gemeenschaps/nuts)",
-      "fail_message": "De gezamenlijke oppervlakte overschrijdt 1000 m² voor SPECIAL‑locaties."
+        },
+        "legal_basis": "Artikel 5/2, 3° — opp. SPECIAL ≤ 1000 m²",
+        "fail_message": "De oppervlakte overschrijdt de maximale 1000 m² op SPECIAL-locaties.",
+        "is_required": false,
+        "is_conditional": true,
+        "conditional_on": "H_05=SPECIAL"
       },
+
       {
         "id": "H_06_OTHER",
         "route": "H",
         "section": "ROUTE",
-        "text": "Gezamenlijke opp. (m²) (max. 500 m² op OTHER)",
+        "text": "Opp. max 500 m² (OTHER)",
         "answer_type": "number",
         "required_if": {
           "question": "H_05",
           "equals": "OTHER"
-        }
-      "legal_basis": "Artikel 5/2, 3° — gezamenlijke oppervlakte ≤ 500 m² (OTHER: overige gevallen)",
-      "fail_message": "De gezamenlijke oppervlakte overschrijdt 500 m² voor OTHER‑locaties."
+        },
+        "legal_basis": "Artikel 5/2, 3° — opp. OTHER ≤ 500 m²",
+        "fail_message": "De oppervlakte overschrijdt de maximale 500 m² op OTHER-locaties.",
+        "is_required": false,
+        "is_conditional": true,
+        "conditional_on": "H_05=OTHER"
       },
+
       {
         "id": "H_07",
         "route": "H",
         "section": "ROUTE",
-        "text": "NIET in erosiegevoelig gebied? (ja=OK)",
+        "text": "NIET in erosiegevoelig gebied?",
         "answer_type": "boolean",
         "legal_basis": "Artikel 5/2, 4° b) — niet in erosiegevoelig gebied",
-        "fail_message": "De plaatsing gebeurt in een erosiegevoelig gebied. Dat is uitgesloten."
+        "fail_message": "De geplaatste constructies liggen in erosiegevoelig gebied, wat verboden is onder art. 5/2.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "H_08",
         "route": "H",
         "section": "ROUTE",
-        "text": "NIET in gebied met middelgrote overstromingskans? (ja=OK)",
+        "text": "NIET in gebied met middelgrote overstromingskans?",
         "answer_type": "boolean",
-        "legal_basis": "Artikel 5/2, 4° c) — niet in gebied met middelgrote overstromingskans",
-        "fail_message": "De plaatsing gebeurt in een gebied met middelgrote overstromingskans. Dat is uitgesloten."
+        "legal_basis": "Artikel 5/2, 4° c) — niet in middelgrote overstromingskans",
+        "fail_message": "De constructies liggen in een gebied met middelgrote overstromingskans, wat verboden is.",
+        "is_required": true,
+        "is_conditional": false
       },
+
       {
         "id": "H_09",
         "route": "H",
         "section": "ROUTE",
-        "text": "Afstand (m) tot perceelsgrenzen (min. 10 m)",
+        "text": "Afstand tot perceelsgrenzen (≥ 10 m)",
         "answer_type": "number",
-        "legal_basis": "Artikel 5/2, 5° — afstand ≥ 10 m tot perceelsgrenzen"
+        "legal_basis": "Artikel 5/2, 5° — afstand ≥ 10 m tot alle perceelsgrenzen",
+        "is_required": true,
+        "is_conditional": false
       }
     ]
   },
+
+  /* ============================
+     DECISION LOGIC (VALIDATION)
+     ============================ */
   "decision_logic": {
     "exclusion_gate": {
       "blocking_questions": [
@@ -856,208 +1085,76 @@
         "EXC_04"
       ]
     },
+
     "route_rules": [
       {
         "route": "A",
-        "required_true": [
-          "A_01",
-          "A_02",
-          "A_03"
-        ]
+        "required_true": ["A_01", "A_02", "A_03"]
       },
+
       {
         "route": "B",
-        "required_true": [
-          "B_01",
-          "B_02",
-          "B_03",
-          "B_04"
-        ]
+        "required_true": ["B_01", "B_02", "B_03", "B_04"]
       },
+
       {
         "route": "C",
-        "required_true": [
-          "C_01",
-          "C_02",
-          "C_03",
-          "C_11"
-        ],
+        "required_true": ["C_01", "C_02", "C_03", "C_11"],
         "required_numeric": [
-          {
-            "id": "C_04",
-            "rule": "max",
-            "value": 40
-          },
-          {
-            "id": "C_06S",
-            "rule": "min",
-            "value": 3
-          },
-          {
-            "id": "C_06R",
-            "rule": "min",
-            "value": 2
-          },
-          {
-            "id": "C_07",
-            "rule": "max",
-            "value": 4
-          }
+          {"id":"C_04","rule":"max","value":40},
+          {"id":"C_06S","rule":"min","value":3},
+          {"id":"C_06R","rule":"min","value":2},
+          {"id":"C_07","rule":"max","value":4}
         ]
       },
+
       {
         "route": "D",
-        "required_true": [
-          "D_01",
-          "D_02",
-          "D_03",
-          "D_08",
-          "D_H1",
-          "D_H2",
-          "D_H3",
-          "D_H4"
-        ],
+        "required_true": ["D_01", "D_02", "D_03", "D_08", "D_H1", "D_H2", "D_H3", "D_H4"],
         "required_numeric": [
-          {
-            "id": "D_04",
-            "rule": "max",
-            "value": 20
-          },
-          {
-            "id": "D_05",
-            "rule": "max",
-            "value": 300
-          },
-          {
-            "id": "D_06",
-            "rule": "min",
-            "value": 30
-          },
-          {
-            "id": "D_07",
-            "rule": "min",
-            "value": 5
-          }
+          {"id":"D_04","rule":"max","value":20},
+          {"id":"D_05","rule":"max","value":300},
+          {"id":"D_06","rule":"min","value":30},
+          {"id":"D_07","rule":"min","value":5}
         ]
       },
+
       {
         "route": "E",
-        "required_true": [
-          "E_01",
-          "E_02",
-          "E_03",
-          "E_04",
-          "E_06",
-          "E_H1",
-          "E_H2",
-          "E_H3",
-          "E_H4"
-        ],
+        "required_true": ["E_01","E_02","E_03","E_04","E_06","E_H1","E_H2","E_H3","E_H4"],
         "required_numeric": [
-          {
-            "id": "E_05",
-            "rule": "max",
-            "value": 500
-          },
-          {
-            "id": "E_07",
-            "rule": "min",
-            "value": 10
-          },
-          {
-            "id": "E_08",
-            "rule": "min",
-            "value": 3
-          }
+          {"id":"E_05","rule":"max","value":500},
+          {"id":"E_07","rule":"min","value":10},
+          {"id":"E_08","rule":"min","value":3}
         ]
       },
+
       {
         "route": "F",
-        "required_true": [
-          "F_01",
-          "F_02",
-          "F_03",
-          "F_08",
-          "F_13",
-          "F_H1",
-          "F_H2",
-          "F_H3",
-          "F_H4"
-        ],
+        "required_true": ["F_01","F_02","F_03","F_08","F_13","F_H1","F_H2","F_H3","F_H4"],
         "required_numeric": [
-          {
-            "id": "F_06",
-            "rule": "min",
-            "value": 5
-          },
-          {
-            "id": "F_07",
-            "rule": "max",
-            "value": 500
-          },
-          {
-            "id": "F_09",
-            "rule": "min",
-            "value": 30
-          },
-          {
-            "id": "F_10",
-            "rule": "min",
-            "value": 5
-          },
-          {
-            "id": "F_11",
-            "rule": "max",
-            "value": 1
-          },
-          {
-            "id": "F_12",
-            "rule": "max",
-            "value": 20
-          },
-          {
-            "id": "F_14",
-            "rule": "exclusiveMax",
-            "value": 350
-          }
+          {"id":"F_06","rule":"min","value":5},
+          {"id":"F_07","rule":"max","value":500},
+          {"id":"F_09","rule":"min","value":30},
+          {"id":"F_10","rule":"min","value":5},
+          {"id":"F_11","rule":"max","value":1},
+          {"id":"F_12","rule":"max","value":20},
+          {"id":"F_14","rule":"exclusiveMax","value":350}
         ]
       },
+
       {
         "route": "G",
-        "required_true": [
-          "G_01",
-          "G_02",
-          "G_03",
-          "G_04",
-          "G_06",
-          "G_07"
-        ]
+        "required_true": ["G_01","G_02","G_03","G_04","G_06","G_07"]
       },
+
       {
         "route": "H",
-        "required_true": [
-          "H_01",
-          "H_02",
-          "H_04",
-          "H_07",
-          "H_08"
-        ],
+        "required_true": ["H_01","H_02","H_04","H_07","H_08"],
         "required_numeric": [
-          {
-            "id": "H_06_SPECIAL",
-            "rule": "max",
-            "value": 1000
-          },
-          {
-            "id": "H_06_OTHER",
-            "rule": "max",
-            "value": 500
-          },
-          {
-            "id": "H_09",
-            "rule": "min",
-            "value": 10
-          }
+          {"id":"H_06_SPECIAL","rule":"max","value":1000},
+          {"id":"H_06_OTHER","rule":"max","value":500},
+          {"id":"H_09","rule":"min","value":10}
         ]
       }
     ]
