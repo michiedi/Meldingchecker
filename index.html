@@ -8,9 +8,31 @@
 </head>
 <body>
 
+<!-- ================================
+     MODAL (bovenaan geplaatst)
+     ================================ -->
+<div id="report-modal" class="hidden modal-backdrop" role="dialog" aria-modal="true">
+  <div class="modal">
+    <h2>Verslagtekst</h2>
+    <p><strong>Kopieer deze tekst in je verslag:</strong></p>
+
+    <textarea id="report-text" readonly></textarea>
+
+    <button id="copy-btn">Kopieer tekst</button>
+    <button id="close-modal">Sluiten</button>
+  </div>
+</div>
+
+<!-- ================================
+     HOOFDCONTENT
+     ================================ -->
 <div class="container">
   <h1>Meldingsbesluit Toetshulp</h1>
-  <p>Beantwoord de vragen stap voor stap om te bepalen of jouw handeling een <strong>meldingsplichtige handeling</strong> is volgens Hoofdstuk 2 van het Meldingsbesluit VCRO.</p>
+
+  <p>
+    Beantwoord de vragen stap voor stap om te bepalen of jouw handeling een
+    <strong>meldingsplichtige handeling</strong> is volgens Hoofdstuk 2 van het Meldingsbesluit VCRO.
+  </p>
 
   <div id="question-container"></div>
 
@@ -21,21 +43,15 @@
 
   <div id="result" class="hidden" role="status" aria-live="polite"></div>
 
-  <p class="note">De uitkomst is indicatief. Lokale voorschriften (RUP/BPA/verordeningen/erfgoed) kunnen de meldingsplicht opheffen.</p>
-</div>
+  <p class="note">
+    De uitkomst is indicatief. Lokale voorschriften (RUP/BPA/verordeningen/erfgoed)
+    kunnen de meldingsplicht opheffen.
+  </p>
+</==========
+     SCRIPTS
+     ================================ -->
+schema-loader.js</script>
+app.js</script>
 
-<script src="schema-loader.js" defer></script>
-<script src="app.js" defer></script>
-<!-- Berichtvenster voor de verslagtekst -->
-<div id="report-modal" class="hidden modal-backdrop">
-  <div class="modal">
-    <h2>Verslagtekst</h2>
-    <p><strong>Kopieer deze tekst in je verslag:</strong></p>
-    <textarea id="report-text" readonly></textarea>
-
-    <button id="copy-btn">Kopieer tekst</button>
-    <button id="close-modal">Sluiten</button>
-  </div>
-</div>
 </body>
 </html>
