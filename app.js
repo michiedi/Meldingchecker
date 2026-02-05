@@ -90,10 +90,18 @@ function evaluate(){
     showFailures(res, failures, "Geen melding mogelijk (voorwaarden niet gehaald)");
     return;
   }
+  res.innerHTML += `
+  <br><br>
+  <button onclick="showReportText()">Genereer verslagtekst</button>
+`;
 
   // ---------- SUCCES ----------
   res.style.background='#dcfce7';
   res.style.border='1px solid #4ade80';
+  res.innerHTML += `
+  <br><br>
+  <button onclick="showReportText()">Genereer verslagtekst</button>
+`;
   res.innerHTML = `
     ✅ <strong>Melding lijkt mogelijk</strong> volgens route <strong>${route}</strong>.<br>
     Onder voorbehoud van lokale voorschriften en volledigheidscontrole.
