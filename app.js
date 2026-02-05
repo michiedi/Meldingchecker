@@ -66,6 +66,24 @@ function evaluate(){
       });
     }
   });
+  function showFailures(res, failures, title){
+  res.style.background='#fee2e2';
+  res.style.border='1px solid #ef4444';
+
+  let html = `❌ <strong>${title}</strong><br><br>`;
+
+  failures.forEach(f=>{
+    html += `
+      <div style="margin-bottom:10px">
+        <strong>${f.id}</strong>: ${f.label}<br>
+        ➤ <em>${f.message}</em><br>
+        <span style="color:#555">(${f.basis})</span>
+      </div>
+    `;
+  });
+
+  res.innerHTML = html;
+}
 
   // ---------- UITKOMST ----------
   if(failures.length){
