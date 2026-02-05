@@ -374,6 +374,28 @@ async function boot(){
 }
 document.addEventListener('DOMContentLoaded', boot);
 
+document.addEventListener('DOMContentLoaded', () => {
+  const closeBtn = document.getElementById("close-modal");
+  const copyBtn  = document.getElementById("copy-btn");
+  const resetBtn = document.getElementById("reset-btn");
+
+  if (closeBtn) {
+    closeBtn.onclick = () => document.getElementById("report-modal").classList.add("hidden");
+  }
+  if (copyBtn) {
+    copyBtn.onclick = () => {
+      const txt = document.getElementById("report-text").value;
+      navigator.clipboard.writeText(txt);
+      copyBtn.innerText = "Gekopieerd!";
+      setTimeout(() => copyBtn.innerText = "Kopieer tekst", 1500);
+    };
+  }
+  if (resetBtn) {
+    resetBtn.onclick = resetTool;
+  }
+});
+
+
 /* ============================
    (OPTIONEEL) FOUT-OVERLAY
    ============================ */
