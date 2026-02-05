@@ -64,6 +64,14 @@ button.secondary:hover { background: #4b5563; }
 
 button.hidden { display: none; }
 
+/* Optioneel: een 'ghost' stijl */
+button.ghost {
+  background: white;
+  color: #0d6efd;
+  border: 1px solid #0d6efd;
+}
+button.ghost:hover { background: #eff6ff; }
+
 .nav { display: flex; gap: 10px; }
 
 /* ============================
