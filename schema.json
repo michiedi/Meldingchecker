@@ -8,24 +8,32 @@
         "section": "EXCLUSION_GATE",
         "text": "Strijdig met verordening/RUP/BPA/verkaveling/vergunningsvoorwaarden?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 6, lid 1 — strijd met verordeningen, plannen of vergunningsvoorwaarden",
+        "fail_message": "De handeling is strijdig met geldende voorschriften (bv. verordening, RUP/BPA, verkavelingsvoorschriften) of met uitdrukkelijke voorwaarden van een omgevingsvergunning. Daardoor kan het meldingsbesluit niet worden toegepast."
       },
       {
         "id": "EXC_02",
         "section": "EXCLUSION_GATE",
         "text": "Beschermd erfgoed (monument/landschap/stads- of dorpsgezicht/archeologie)?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 6, lid 2 — beschermd erfgoed (monument, landschap, stads-/dorpsgezicht, archeologische site)",
+        "fail_message": "De handeling ligt op of binnen beschermd erfgoed. Meldingsplicht is hier uitgesloten."
       },
       {
         "id": "EXC_03",
         "section": "EXCLUSION_GATE",
         "text": "In afgebakende oeverzone of 5m-strook langs (on)bevaarbare waterlopen?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 6, lid 3 — oeverzones en 5 m-strook langs waterlopen",
+        "fail_message": "De handeling ligt in een afgebakende oeverzone of in de 5 meter brede strook langs een ingedeelde waterloop. Daarom kan geen melding."
       },
       {
         "id": "EXC_04",
         "section": "EXCLUSION_GATE",
         "text": "Voor de rooilijn of in achteruitbouwstrook?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 6, lid 4 — voor de rooilijn of in achteruitbouwstrook",
+        "fail_message": "De handeling ligt voor de rooilijn of in een achteruitbouwstrook en valt daardoor buiten het toepassingsgebied van het meldingsbesluit."
       },
       {
         "id": "CAT_01",
@@ -73,6 +81,8 @@
         "section": "ROUTE",
         "text": "Stabiliteitswerken binnenin (ge)vergund gebouw?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 2 (inleidend) — stabiliteitswerken binnen hoofdzakelijk (ge)vergund gebouw",
+        "fail_message": "De werken zijn geen stabiliteitswerken binnenin een hoofdzakelijk (ge)vergund gebouw."
       },
       {
         "id": "A_02",
@@ -80,6 +90,8 @@
         "section": "ROUTE",
         "text": "Geen vergunningsplichtige functiewijziging?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 2, 1° — geen vergunningsplichtige functiewijziging",
+        "fail_message": "Er is een vergunningsplichtige functiewijziging. Daardoor is melding uitgesloten en is een vergunning vereist."
       },
       {
         "id": "A_03",
@@ -87,6 +99,9 @@
         "section": "ROUTE",
         "text": "Aantal woongelegenheden blijft ongewijzigd?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 2, 2° — aantal woongelegenheden blijft ongewijzigd",
+        "fail_message": "Het aantal woongelegenheden wijzigt. Hierdoor kan geen melding."
+
       },
       {
         "id": "B_01",
@@ -94,6 +109,8 @@
         "section": "ROUTE",
         "text": "Stabiliteitswerken aan zij-/achtergevel(s) of dak (ge)vergund gebouw?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 3 (inleidend) — stabiliteitswerken aan zij-/achtergevels en daken",
+        "fail_message": "De werken betreffen niet de zij-/achtergevel(s) of het dak van een hoofdzakelijk (ge)vergund gebouw."
       },
       {
         "id": "B_02",
@@ -101,6 +118,8 @@
         "section": "ROUTE",
         "text": "Geen vergunningsplichtige functiewijziging?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 3, 1° — geen vergunningsplichtige functiewijziging",
+        "fail_message": "Er is een vergunningsplichtige functiewijziging. Daardoor vervalt de meldingsmogelijkheid.
       },
       {
         "id": "B_03",
@@ -108,6 +127,8 @@
         "section": "ROUTE",
         "text": "Aantal woongelegenheden blijft ongewijzigd?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 3, 2° — aantal woongelegenheden blijft ongewijzigd",
+        "fail_message": "Het aantal woongelegenheden wijzigt, waardoor melding niet kan.
       },
       {
         "id": "B_04",
@@ -115,6 +136,9 @@
         "section": "ROUTE",
         "text": "Bouwvolume en -oppervlakte blijven ongewijzigd?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 3, 3° — bouwvolume en bouwoppervlakte blijven ongewijzigd",
+        "fail_message": "Bouwvolume of bouwoppervlakte wijzigt. Voor dergelijke wijziging volstaat een melding niet."
+
       },
       {
         "id": "C_01",
