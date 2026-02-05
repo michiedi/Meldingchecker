@@ -146,6 +146,8 @@
         "section": "ROUTE",
         "text": "Aangebouwd bijgebouw aan (ge)vergunde woning?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 4 (inleidend) — aangebouwd bijgebouw aan hoofdzakelijk (ge)vergunde woning",
+        "fail_message": "Het gaat niet om een aangebouwd bijgebouw aan een (ge)vergunde woning."
       },
       {
         "id": "C_02",
@@ -153,6 +155,8 @@
         "section": "ROUTE",
         "text": "Geen vergunningsplichtige functiewijziging?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 4, 1° — geen vergunningsplichtige functiewijziging",
+        "fail_message": "Er is een vergunningsplichtige functiewijziging. Meldingsprocedure is dan niet mogelijk."
       },
       {
         "id": "C_03",
@@ -160,6 +164,8 @@
         "section": "ROUTE",
         "text": "Aantal woongelegenheden blijft ongewijzigd?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 4, 2° — aantal woongelegenheden blijft ongewijzigd",
+        "fail_message": "Het aantal woongelegenheden wijzigt. Daardoor kan geen melding."
       },
       {
         "id": "C_04",
@@ -167,6 +173,7 @@
         "section": "ROUTE",
         "text": "Totale opp. (m²) bestaande + nieuwe aangebouwde bijgebouwen",
         "answer_type": "number"
+        "legal_basis": "Artikel 4, 3° — totale oppervlakte aangebouwde bijgebouwen ≤ 40 m²"
       },
       {
         "id": "C_05",
@@ -184,6 +191,7 @@
             "label": "Achtertuin"
           }
         ]
+       "legal_basis": "Artikel 4, 4° — afstandsregels in zijtuin (≥3 m) of achtertuin (≥2 m)
       },
       {
         "id": "C_06S",
@@ -195,6 +203,7 @@
           "question": "C_05",
           "equals": "SIDE_GARDEN"
         }
+      "legal_basis": "Artikel 4, 4° — zijtuin: afstand tot perceelsgrens ≥ 3 m
       },
       {
         "id": "C_06R",
@@ -206,6 +215,7 @@
           "question": "C_05",
           "equals": "REAR_GARDEN"
         }
+      "legal_basis": "Artikel 4, 4° — achtertuin: afstand tot perceelsgrens ≥ 2 m" 
       },
       {
         "id": "C_07",
@@ -213,6 +223,7 @@
         "section": "ROUTE",
         "text": "Hoogte (m) bijgebouw (max. 4 m)",
         "answer_type": "number"
+        "legal_basis": "Artikel 4, 5° — maximale hoogte bijgebouw 4 m"
       },
       {
         "id": "C_08",
@@ -220,6 +231,8 @@
         "section": "ROUTE",
         "text": "Hoofdgebouw op/tegen perceelsgrens? (afwijkingstraject)",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 4 (afwijkingspad) — hoofdgebouw op/tegen perceelsgrens",
+        "fail_message": "Afwijkingspad kan enkel als het hoofdgebouw op/tegen de perceelsgrens staat."
       },
       {
         "id": "C_09",
@@ -231,6 +244,8 @@
           "question": "C_08",
           "equals": true
         }
+        "legal_basis": "Artikel 4 (afwijkingspad) — bijgebouw op/tegen perceelsgrens tegen bestaand aanpalend, zonder wijziging scheidingsmuur",
+        "fail_message": "Bij het afwijkingspad moet het bijgebouw op/tegen de perceelsgrens tegen een bestaand aanpalend gebouw komen, zonder de bestaande scheidingsmuur te wijzigen.
       },
       {
         "id": "C_10",
@@ -242,6 +257,8 @@
           "question": "C_08",
           "equals": true
         }
+        "legal_basis": "Artikel 4 (afwijkingspad) — bouwdiepte nieuwe aanbouw ≤ bouwdiepte aanpalend",
+        "fail_message": "Bij het afwijkingspad mag de bouwdiepte van het nieuwe bijgebouw de bouwdiepte van het aanpalende gebouw niet overschrijden."
       },
       {
         "id": "C_11",
@@ -249,6 +266,8 @@
         "section": "ROUTE",
         "text": "Fysiek aansluitende aanhorigheid met bouwtechnische aansluiting/steun?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 4 (definitie) — bijgebouw = fysiek aansluitende aanhorigheid met bouwtechnische aansluiting/steun",
+        "fail_message": "Het gaat niet om een fysiek aansluitende aanhorigheid die bouwtechnisch aansluit of steunt op het hoofdgebouw."
       },
       {
         "id": "D_01",
@@ -256,6 +275,8 @@
         "section": "ROUTE",
         "text": "Constructies (géén gebouwen of verhardingen)?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 5 §1, 1° — het betreft constructies, geen gebouwen of verhardingen",
+        "fail_message": "Deze categorie is enkel voor constructies (geen gebouwen of verhardingen)."
       },
       {
         "id": "D_02",
@@ -263,6 +284,8 @@
         "section": "ROUTE",
         "text": "In functie van bestaande industrie/bedrijvigheid?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 5 §1, 2° — in functie van bestaande industrie en bedrijvigheid",
+        "fail_message": "De constructies staan niet in functie van bestaande industrie/bedrijvigheid."
       },
       {
         "id": "D_03",
@@ -270,6 +293,8 @@
         "section": "ROUTE",
         "text": "Binnen 50 m van (ge)vergund gebouw of (ge)vergunde verharding?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 5 §1, 3° — binnen 50 m van (ge)vergund gebouw/verharding",
+        "fail_message": "De constructies liggen niet binnen 50 m van een (ge)vergund gebouw of (ge)vergunde verharding."
       },
       {
         "id": "D_04",
@@ -277,6 +302,7 @@
         "section": "ROUTE",
         "text": "Hoogte (m) (max. 20 m)",
         "answer_type": "number"
+        "legal_basis": "Artikel 5 §1, 4° — hoogte ≤ 20 m"
       },
       {
         "id": "D_05",
@@ -284,6 +310,7 @@
         "section": "ROUTE",
         "text": "Gezamenlijke opp. (m²) vergunningsvrij+gemeld (max. 300 m²)",
         "answer_type": "number"
+        "legal_basis": "Artikel 5 §1, 5° — gezamenlijke oppervlakte vergunningsvrij + gemeld ≤ 300 m²"
       },
       {
         "id": "D_06",
@@ -291,6 +318,8 @@
         "section": "ROUTE",
         "text": "Afstand (m) tot woongebied (ruime zin) of ruimtelijk kwetsbaar (niet park) (min. 30 m)",
         "answer_type": "number"
+        "legal_basis": "Artikel 5 §1, 6° a) — afstand ≥ 30 m tot woongebied (ruime zin) en ruimtelijk kwetsbaar (niet park)",
+        "fail_message": "De afstand tot woongebied/ruimtelijk kwetsbaar gebied is onvoldoende.
       },
       {
         "id": "D_07",
@@ -298,6 +327,7 @@
         "section": "ROUTE",
         "text": "Afstand (m) tot alle perceelsgrenzen (min. 5 m)",
         "answer_type": "number"
+        "legal_basis": "Artikel 5 §1, 6° b) — afstand ≥ 5 m tot alle perceelsgrenzen"
       },
       {
         "id": "D_08",
@@ -305,6 +335,8 @@
         "section": "ROUTE",
         "text": "Bereikbaarheid hulpdiensten (incl. brandweer) NIET verminderd?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 5 §1, 7° — bereikbaarheid hulpdiensten mag niet verminderen",
+        "fail_message": "De bereikbaarheid voor hulpdiensten (incl. brandweer) wordt verminderd. Dat is niet toegelaten."
       },
       {
         "id": "D_H1",
@@ -312,6 +344,8 @@
         "section": "ROUTE",
         "text": "Binnen grenzen zeehavens (Oostende/Zeebrugge/Gent/Antwerpen)?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 5 §4, 1° — binnen afbakening zeehavens (Oostende, Zeebrugge, Gent, Antwerpen)",
+        "fail_message": "De handelingen liggen niet binnen de afgebakende zeehavens (voorwaarde van §4)."
       },
       {
         "id": "D_H2",
@@ -319,6 +353,8 @@
         "section": "ROUTE",
         "text": "Niet voor de rooilijn?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 5 §4, 2° — niet voor de rooilijn",
+        "fail_message": "De handelingen liggen voor de rooilijn, wat in §4 uitdrukkelijk uitgesloten is."
       },
       {
         "id": "D_H3",
@@ -326,6 +362,8 @@
         "section": "ROUTE",
         "text": "Gaat NIET gepaard met ontbossing?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 5 §4, 3° — geen ontbossing",
+        "fail_message": "De handelingen gaan gepaard met ontbossing, wat §4 uitsluit.
       },
       {
         "id": "D_H4",
@@ -333,6 +371,8 @@
         "section": "ROUTE",
         "text": "Niet strijdig met stedenbouwkundige voorschriften?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 5 §4, 4° — niet strijdig met stedenbouwkundige voorschriften",
+        "fail_message": "De handelingen zijn strijdig met stedenbouwkundige voorschriften en kunnen niet als melding."
       },
       {
         "id": "E_01",
@@ -340,6 +380,8 @@
         "section": "ROUTE",
         "text": "Aanleg/uitbreiding verhardingen?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 5 §2 (inleidend) — aanleggen of uitbreiden van verhardingen",
+        "fail_message": "De handelingen betreffen geen verhardingen (aanleg/uitbreiding)."
       },
       {
         "id": "E_02",
@@ -347,6 +389,8 @@
         "section": "ROUTE",
         "text": "In functie van bestaande industrie/bedrijvigheid?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 5 §2, 1° — in functie van bestaande industrie en bedrijvigheid",
+        "fail_message": "De verhardingen staan niet in functie van bestaande industrie/bedrijvigheid."
       },
       {
         "id": "E_03",
@@ -354,6 +398,8 @@
         "section": "ROUTE",
         "text": "Bestaat BPA of RUP voor de plaats?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 5 §2, 2° — er bestaat een BPA of RUP voor de plaats",
+        "fail_message": "Voor de locatie bestaat geen BPA/RUP, terwijl dit vereist is."
       },
       {
         "id": "E_04",
@@ -361,6 +407,8 @@
         "section": "ROUTE",
         "text": "Binnen 50 m van (ge)vergund gebouw of (ge)vergunde verharding?",
         "answer_type": "boolean"
+        "legal_basis": "Artikel 5 §2, 3° — binnen 50 m van (ge)vergund gebouw/verharding",
+        "fail_message": "Niet binnen 50 m van (ge)vergund gebouw/verharding."
       },
       {
         "id": "E_05",
