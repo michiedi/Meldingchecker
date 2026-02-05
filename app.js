@@ -98,4 +98,52 @@ function evaluate(){
     ✅ <strong>Melding lijkt mogelijk</strong> volgens route <strong>${route}</strong>.<br>
     Onder voorbehoud van lokale voorschriften en volledigheidscontrole.
   `;
+// ----- GENEREER TWEE WILLEKEURIGE ZINNEN -----
+function randomSentences() {
+  const sentences = [
+    "Dit is een voorbeeldzin die uitsluitend dient ter illustratie van de verslagtekst.",
+    "De inhoud van deze zin heeft geen juridische waarde en kan vrij worden aangepast.",
+    "De beoordeling is gebaseerd op de ingevoerde gegevens en geldt enkel indicatief.",
+    "Voor afwijking of interpretatie van regelgeving wordt steeds het advies van de bevoegde dienst aanbevolen.",
+    "Deze tekst is automatisch gegenereerd als sjabloon voor het verslag."
+  ];
+
+  // kies willekeurige twee zinnen
+  const a = sentences[Math.floor(Math.random()*sentences.length)];
+  const b = sentences[Math.floor(Math.random()*sentences.length)];
+  return `${a} ${b}`;
+}
+
+
+// ----- TOON RAPPORTVENSTER -----
+function showReportText() {
+  const modal = document.getElementById("report-modal");
+  const textarea = document.getElementById("report-text");
+
+  textarea.value = randomSentences();
+
+  modal.classList.remove("hidden");
+}
+
+
+// ----- KNOOP AAN UI -----
+document.addEventListener("DOMContentLoaded", () => {
+  const closeBtn = document.getElementById("close-modal");
+  const copyBtn  = document.getElementById("copy-btn");
+
+  if(closeBtn){
+    closeBtn.onclick = () => {
+      document.getElementById("report-modal").classList.add("hidden");
+    };
+  }
+
+  if(copyBtn){
+    copyBtn.onclick = () => {
+      const txt = document.getElementById("report-text").value;
+      navigator.clipboard.writeText(txt);
+      copyBtn.innerText = "Gekopieerd!";
+      setTimeout(()=>copyBtn.innerText="Kopieer tekst", 1500);
+    };
+  }
+});
 }
