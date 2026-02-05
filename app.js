@@ -352,29 +352,36 @@ document.addEventListener("DOMContentLoaded", () => {
 /* ============================
    BOOTSTRAP
    ============================ */
-async function boot(){
+/* ============================
+   BOOTSTRAP / INITIALISATIE
+   ============================ */
+document.addEventListener('DOMContentLoaded', async () => {
+
+  // 1) Schema laden
   schema = await loadSchema();
   if (!schema.questionnaire || !schema.questionnaire.questions.length) {
     console.warn('[boot] Geen vragen geladen – init afgebroken.');
     return;
   }
+
+  // 2) Basisinstellingen
   order = schema.questionnaire.questions;
   idx = findNextIndex(0);
-  if (idx === -1){
-    // toon eerst categorie-vraag als niets anders matcht
+
+  if (idx === -1) {
+    // toon eerst categorie-vraag als niets matcht
     idx = order.findIndex(q => q.id === 'CAT_01');
     if (idx < 0) idx = 0;
   }
-  renderQuestion(order[idx]);
 
+  renderQuestion(order[idx]);
+  console.log('[boot] klaar. Eerste vraag:', order[idx]?.id);
+
+  // 3) Navigation knoppen
   document.getElementById('next-btn').onclick = onNext;
   document.getElementById('prev-btn').onclick = onPrev;
 
-  console.log('[boot] klaar. Eerste vraag:', order[idx]?.id);
-}
-document.addEventListener('DOMContentLoaded', boot);
-
-document.addEventListener('DOMContentLoaded', () => {
+  // 4) Modal knoppen
   const closeBtn = document.getElementById("close-modal");
   const copyBtn  = document.getElementById("copy-btn");
   const resetBtn = document.getElementById("reset-btn");
@@ -382,6 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (closeBtn) {
     closeBtn.onclick = () => document.getElementById("report-modal").classList.add("hidden");
   }
+
   if (copyBtn) {
     copyBtn.onclick = () => {
       const txt = document.getElementById("report-text").value;
@@ -390,9 +398,12 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => copyBtn.innerText = "Kopieer tekst", 1500);
     };
   }
+
+  // 5) Reset knop
   if (resetBtn) {
     resetBtn.onclick = resetTool;
   }
+
 });
 
 
