@@ -1,19 +1,23 @@
 function evaluate(){
   const res = document.getElementById('result');
-  res.classList.remove('hidden');
+
+  // Hou het resultaatkader VERBORGEN totdat we een echte uitkomst hebben
+  res.classList.add('hidden');
   res.style.background = "";
   res.style.border = "";
+  res.innerHTML = "";
+
+  console.log("[evaluate] gestart. Huidige antwoorden:", JSON.stringify(answers));
 
   const failures = [];
 
   /* ---------------------------------
      1) Uitsluitingsgronden (art. 6)
      --------------------------------- */
-  const blocks = schema.decision_logic.exclusion_gate.blocking_questions;
-
+  const blocks = schema?.decision_logic?.exclusion_gate?.blocking_questions || [];
   blocks.forEach(id => {
     if (valToBool(answers[id]) === true) {
-      const q = order.find(x => x.id === id);
+      const q = order.find(x => x.id === id) || { text: id };
       failures.push({
         id,
         label: q.text,
@@ -31,12 +35,13 @@ function evaluate(){
      2) Route‑regels
      --------------------------------- */
   const route = answers.CAT_01;
-  const rule = schema.decision_logic.route_rules.find(r => r.route === route);
+  const rule = (schema?.decision_logic?.route_rules || []).find(r => r.route === route);
 
   if (!rule) {
     res.style.background = "#fff7dd";
     res.style.border = "1px solid orange";
-    res.innerHTML = "⚠ Geen route-logica gevonden.";
+    res.innerHTML = "⚠ Geen route-logica gevonden. Kies eerst een hoofdcategorie.";
+    res.classList.remove('hidden');   // pas nu tonen
     return;
   }
 
@@ -44,15 +49,13 @@ function evaluate(){
   (rule.required_true || []).forEach(qid => {
     const v = valToBool(answers[qid]);
     if (v !== true) {
-      const q = order.find(x => x.id === qid);
-      if (q) {
-        failures.push({
-          id: qid,
-          label: q.text,
-          basis: q.legal_basis || "(geen basis in schema)",
-          message: q.fail_message || "Deze voorwaarde moet 'ja' zijn."
-        });
-      }
+      const q = order.find(x => x.id === qid) || { text: qid };
+      failures.push({
+        id: qid,
+        label: q.text,
+        basis: q.legal_basis || "(geen basis in schema)",
+        message: q.fail_message || "Deze voorwaarde moet 'ja' zijn."
+      });
     }
   });
 
@@ -67,7 +70,7 @@ function evaluate(){
     if (n.rule === "exclusiveMax" && !(val < n.value)) bad = true;
 
     if (bad) {
-      const q = order.find(x => x.id === n.id);
+      const q = order.find(x => x.id === n.id) || { text: n.id };
       failures.push({
         id: n.id,
         label: q.text,
@@ -91,12 +94,13 @@ function evaluate(){
   res.style.border = "1px solid #4ade80";
 
   res.innerHTML = `
-    ✅ <strong>Melding lijkt mogelijk</strong> volgens route <strong>${route}</strong>.<br>
+    ✅ <strong>Melding lijkt mogelijk</strong> volgens route <strong>${route || "-"}</strong>.<br>
     Onder voorbehoud van lokale voorschriften en volledigheidscontrole.<br><br>
     <button onclick="showReportText()">Genereer verslagtekst</button>
   `;
-}
 
+  res.classList.remove('hidden');    // pas nu zichtbaar maken
+}
 
 
 /* ============================
@@ -126,8 +130,8 @@ function showFailures(res, failures, title){
   `;
 
   res.innerHTML = html;
+  res.classList.remove('hidden');   // pas nu zichtbaar maken
 }
-
 
 
 /* ============================
