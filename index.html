@@ -26,6 +26,16 @@
 
 <script src="schema-loader.js" defer></script>
 <script src="app.js" defer></script>
+<!-- Berichtvenster voor de verslagtekst -->
+<div id="report-modal" class="hidden modal-backdrop">
+  <div class="modal">
+    <h2>Verslagtekst</h2>
+    <p><strong>Kopieer deze tekst in je verslag:</strong></p>
+    <textarea id="report-text" readonly></textarea>
 
+    <button id="copy-btn">Kopieer tekst</button>
+    <button id="close-modal">Sluiten</button>
+  </div>
+</div>
 </body>
 </html>
