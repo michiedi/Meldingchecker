@@ -116,6 +116,58 @@ function onPrev(){
   const res = document.getElementById('result');
   res.classList.add('hidden');
 }
+function resetTool(){
+  try {
+    // 1) Wis de antwoorden en zet index terug
+    answers = {};
+    idx = 0;
+
+    // 2) Sluit modal en reset copy-knop
+    const modal = document.getElementById("report-modal");
+    const txt   = document.getElementById("report-text");
+    const copy  = document.getElementById("copy-btn");
+    if (modal) modal.classList.add("hidden");
+    if (txt)   txt.value = "";
+    if (copy)  copy.innerText = "Kopieer tekst";
+
+    // 3) Verberg en leeg het resultaatkader
+    const res = document.getElementById("result");
+    if (res) {
+      res.classList.add("hidden");
+      res.style.background = "";
+      res.style.border = "";
+      res.innerHTML = "";
+    }
+
+    // 4) Render opnieuw vanaf de eerste relevante vraag
+    if (!schema || !schema.questionnaire || !schema.questionnaire.questions) {
+      // Als er iets fout loopt met het schema, hard reset
+      console.warn("[resetTool] Schema niet aanwezig, herlaad pagina");
+      window.location.reload();
+      return;
+    }
+
+    order = schema.questionnaire.questions;
+
+    // Zoek de eerste vraag die gesteld mag worden
+    let start = findNextIndex(0);
+    if (start === -1) {
+      // Val terug op de categorie-vraag, en anders op index 0
+      start = order.findIndex(q => q.id === "CAT_01");
+      if (start < 0) start = 0;
+    }
+    idx = start;
+    renderQuestion(order[idx]);
+
+    // 5) Scroll naar boven (fijne UX)
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    console.log("[resetTool] Herstart succesvol.");
+  } catch (e) {
+    console.error("[resetTool] fout:", e);
+    alert("Kon de tool niet herstarten. Probeer de pagina te verversen (Ctrl/Cmd+R).");
+  }
+}
 
 /* ============================
    EVALUATE + FAILURE UI
